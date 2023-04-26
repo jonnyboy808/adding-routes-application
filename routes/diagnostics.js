@@ -8,15 +8,12 @@ diagnostics.get('/', (req, res) => {
   readFromFile('./db/diagnostics.json').then((data) => res.json(JSON.parse(data)))
 });
 
-// POST Route for a error logging
 diagnostics.post('/', (req, res) => {
-  // TODO: Logic for appending data to the db/diagnostics.json file
   console.log("post request received at diagnostics.js")
   console.log(req.body);
   const {tip, topic, username } = req.body;
   
-  //If all required properties--tip, topic, and username--are present
-  //variable for the new error object we'll create
+
   const newDiagnostic = {
     time: Date.now(),
     error_id: uuidv4(),
